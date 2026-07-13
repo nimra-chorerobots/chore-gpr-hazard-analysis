@@ -1,67 +1,390 @@
-# 🛰️ Physical-AI Subsurface Perception using GPR
+# Chore GPR Hazard Analysis
 
-This repository implements a **Physical-AI perception stack** for autonomous robots equipped with **Ground-Penetrating Radar (GPR)**.
+### Real-Time Ground Penetrating Radar (GPR) Visualization, Feature Extraction, and Subsurface Hazard Analysis
 
-Unlike classical obstacle-avoidance systems, this framework enables robots to **reason about buried hazards before physical interaction**, allowing **pre-emptive safety behaviour** instead of reactive collision handling.
+This repository implements a real-time Ground Penetrating Radar (GPR) perception pipeline for qualitative subsurface inspection. It processes radar B-scan data to visualize underground reflections, enhance meaningful features, estimate anomaly levels, and provide interpretable hazard analysis for robotics and infrastructure applications.
 
-The system includes a **live subsurface visualization interface** that converts raw GPR signals into real-time underground perception displays, making hidden hazards directly observable to operators and developers.
-
----
-
-## 🧠 Perception Architecture
-
-**GPR Antenna → B-Scan Formation → Subsurface Feature Encoding → Anomaly-Based Hazard Detection → Physical-AI Safety Supervisor → Robot Motion Constraint / Tool Control**
+The project demonstrates how raw GPR signals can be transformed into useful perception outputs through signal preprocessing, feature extraction, hazard scoring, and visualization.
 
 ---
 
-## 📸 Live Visualization Outputs
+# 📌 Overview
 
-### Figure 1 –Raw GPR B-Scan: Subsurface Reflection Profile  
-<img width="321" height="360" alt="Screenshot_1" src="https://github.com/user-attachments/assets/60e7a4f1-8d41-4973-80d5-31134525650e" />
+Ground Penetrating Radar (GPR) is a non-destructive sensing technology capable of detecting buried objects and subsurface structures by transmitting electromagnetic waves into the ground and analyzing reflected signals.
 
-### Figure 2 – High-Frequency Radar Texture: Clutter & Micro-Reflections  
-<img width="315" height="358" alt="Screenshot_2" src="https://github.com/user-attachments/assets/f0e0d51f-e7b7-469d-b128-ad630cec2350" />
+This repository focuses on qualitative subsurface perception by providing visualization and feature analysis tools that help identify underground anomalies before further processing or robotic deployment.
 
-### Figure 3 – Encoded Subsurface Feature Map  
-<img width="511" height="547" alt="Screenshot_3" src="https://github.com/user-attachments/assets/3f7de418-f9de-4d8d-9085-d419face5589" />
+The pipeline performs:
 
-### Figure 4 – Raw GPR vs Encoded Feature Representation  
-<img width="633" height="354" alt="Screenshot_4" src="https://github.com/user-attachments/assets/56e2eac9-5145-4590-bedb-fdfa2cf73744" />
+- Raw GPR B-scan visualization
+- Signal preprocessing
+- Feature extraction
+- Encoded feature-map generation
+- Hazard-score estimation
+- Live visualization
+- Terrain interpretation
 
-### Figure 5 – Physical-AI Safety Supervisor: SAFE TERRAIN  
-<img width="322" height="359" alt="Screenshot_5" src="https://github.com/user-attachments/assets/b53fb331-c278-410f-89a8-c20cf87a5f47" />
+The repository is intended for:
 
-### Figure 6 – Physical-AI Safety Supervisor: HIGH-RISK Subsurface Anomaly  
-<img width="319" height="355" alt="Screenshot_6" src="https://github.com/user-attachments/assets/9e10eab1-8adc-44bd-85ae-b13656a474dc" />
-
-
-
-*All windows are generated live while the robot processes underground radar signals.*
-
----
-
-## 📂 Repository Structure
-
-<img width="297" height="239" alt="image" src="https://github.com/user-attachments/assets/c3301540-e897-4944-b3b1-0ebf2eb73784" />
-
+- Robotics research
+- GPR signal analysis
+- Infrastructure inspection
+- Underground utility detection
+- Construction monitoring
+- Educational demonstrations
+- Subsurface perception research
 
 ---
 
-## 🔧 File Responsibilities
+# 🚀 Features
 
-| Script | Description |
-|-------|-------------|
-| `gpr_dataset.py` | Robust multi-folder GPR dataset loader |
-| `gpr_live_view.py` | Real-time GPR sensor feed visualizer |
-| `gpr_feature_map.py` | Subsurface feature encoding |
-| `gpr_hazard_map.py` | Buried hazard intensity heat-map |
-| `gpr_safety_supervisor.py` | Physical-AI safety controller with live risk alerts |
-| `main_demo.py` | Subsurface object detection with bounding boxes |
+- Multi-folder GPR dataset processing
+- Real-time B-scan visualization
+- Feature enhancement
+- Encoded subsurface representation
+- Hazard-score estimation
+- Live anomaly visualization
+- Modular processing pipeline
+- Interpretable visualization outputs
 
 ---
 
-## ▶ Installation
+# 📂 Dataset
+
+The project processes Ground Penetrating Radar B-scan images organized into multiple semantic classes.
+
+Example dataset structure:
+
+```text
+gpr_dataset/
+├── intact/
+├── utilities/
+├── cavities/
+├── augmented_intact/
+├── augmented_utilities/
+└── augmented_cavities/
+```
+
+Dataset categories represent:
+
+- **Intact** — Normal subsurface reflections
+- **Utilities** — Buried pipes and underground infrastructure
+- **Cavities** — Underground voids and anomalous structures
+- **Augmented** — Synthetic variations for improved dataset diversity
+
+---
+
+# 🔄 Processing Pipeline
+
+```text
+Ground Penetrating Radar
+            │
+            ▼
+Raw B-Scan Acquisition
+            │
+            ▼
+Signal Preprocessing
+            │
+            ▼
+Feature Extraction
+            │
+            ▼
+Encoded Feature Map
+            │
+            ▼
+Hazard Score Estimation
+            │
+            ▼
+Live Visualization
+            │
+            ▼
+Subsurface Interpretation
+```
+
+---
+
+# ⚙️ Core Components
+
+## 1️⃣ Raw GPR Visualization
+
+Displays the original radar B-scan reflections captured from the subsurface.
+
+Purpose:
+
+- Reflection inspection
+- Layer identification
+- Signal quality assessment
+
+---
+
+## 2️⃣ Feature Extraction
+
+Enhances meaningful radar reflections while suppressing background clutter.
+
+Generated outputs include:
+
+- Enhanced reflections
+- High-frequency texture
+- Reflection edges
+- Buried-object signatures
+
+---
+
+## 3️⃣ Encoded Feature Representation
+
+Transforms processed radar signals into encoded feature maps that emphasize important subsurface structures.
+
+These representations simplify interpretation while preserving important underground information.
+
+---
+
+## 4️⃣ Hazard Score Estimation
+
+Each radar frame is analyzed to estimate an anomaly score representing the likelihood of unusual subsurface reflections.
+
+Higher scores generally indicate stronger anomalies such as:
+
+- Buried utilities
+- Cavities
+- Strong reflection regions
+- Unusual underground structures
+
+---
+
+## 5️⃣ Live Visualization
+
+The pipeline continuously updates visualization windows during execution.
+
+Generated outputs include:
+
+- Raw GPR B-scan
+- Processed radar image
+- Feature map
+- Hazard visualization
+- Encoded representation
+
+The visualization is intended for qualitative analysis rather than automated decision-making.
+
+---
+
+# 🖥 Visualization Outputs
+
+The project generates several visualization stages throughout execution.
+
+## Figure 1 — Raw GPR B-Scan
+
+Displays the original subsurface reflection profile.
+
+*(Insert existing Figure 1)*
+
+---
+
+## Figure 2 — High-Frequency Texture
+
+Highlights clutter and micro-reflection structures.
+
+*(Insert existing Figure 2)*
+
+---
+
+## Figure 3 — Encoded Feature Map
+
+Displays encoded subsurface representations used for qualitative inspection.
+
+*(Insert existing Figure 3)*
+
+---
+
+## Figure 4 — Raw vs Encoded Comparison
+
+Compares original radar reflections with encoded feature maps.
+
+*(Insert existing Figure 4)*
+
+---
+
+## Figure 5 — Hazard Visualization (Low Anomaly)
+
+Illustrates radar frames containing relatively normal subsurface structures.
+
+*(Insert existing Figure 5)*
+
+---
+
+## Figure 6 — Hazard Visualization (High Anomaly)
+
+Shows frames containing stronger anomalous reflections and elevated hazard scores.
+
+*(Insert existing Figure 6)*
+
+---
+
+# 📈 Representative Capabilities
+
+The pipeline demonstrates:
+
+- Continuous GPR visualization
+- Subsurface feature enhancement
+- Encoded radar representations
+- Qualitative anomaly estimation
+- Hazard-score visualization
+- Real-time perception workflow
+
+The project is intended for visualization and interpretation of GPR signals rather than automated underground classification.
+
+---
+
+# 🏗 Architecture
+
+```text
+Ground Penetrating Radar
+        │
+        ▼
+Raw B-Scan
+        │
+        ▼
+Signal Preprocessing
+        │
+        ▼
+Feature Extraction
+        │
+        ▼
+Feature Encoding
+        │
+        ▼
+Hazard Score Estimation
+        │
+        ▼
+Visualization Dashboard
+```
+
+---
+
+# 🚀 Project Status
+
+🟢 **Prototype**
+
+### Current Features
+
+- Live GPR visualization
+- Signal preprocessing
+- Feature extraction
+- Encoded feature maps
+- Hazard-score estimation
+- Modular visualization pipeline
+
+### Planned Improvements
+
+- ROS 2 integration
+- NVIDIA Isaac Sim integration
+- Machine-learning-based anomaly detection
+- Multi-sensor perception
+- Quantitative hazard estimation
+- Real-time deployment optimization
+
+---
+
+# 📂 Repository Structure
+
+```text
+chore-gpr-hazard-analysis/
+│
+├── src/
+│   ├── gpr_dataset.py
+│   ├── gpr_live_view.py
+│   ├── gpr_feature_map.py
+│   ├── gpr_hazard_map.py
+│   ├── gpr_safety_supervisor.py
+│   └── main_demo.py
+│
+├── assets/
+│   ├── input/
+│   ├── output/
+│   └── examples/
+│
+├── README.md
+├── requirements.txt
+├── .gitignore
+├── LICENSE
+├── CHANGELOG.md
+└── CITATION.cff
+```
+
+---
+
+# ▶️ Installation
+
+Clone the repository:
 
 ```bash
-pip install numpy opencv-python
+git clone https://github.com/nimra-chorerobots/chore-gpr-hazard-analysis.git
 
+cd chore-gpr-hazard-analysis
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# 📦 Requirements
+
+- Python 3.9+
+- NumPy
+- OpenCV
+- Matplotlib
+
+Example `requirements.txt`
+
+```text
+numpy
+opencv-python
+matplotlib
+```
+
+---
+
+# ▶️ Running the Project
+
+Run the main demonstration:
+
+```bash
+python src/main_demo.py
+```
+
+The application will open multiple visualization windows that update continuously while processing the GPR data.
+
+---
+
+# 💡 Applications
+
+This repository can be used for:
+
+- Ground Penetrating Radar research
+- Subsurface visualization
+- Underground utility inspection
+- Infrastructure monitoring
+- Construction analysis
+- Educational demonstrations
+- Robotics perception research
+- Hazard visualization
+
+---
+
+# 🔮 Future Work
+
+Future versions of this repository will include:
+
+- Machine-learning-based anomaly detection
+- Quantitative hazard scoring
+- ROS 2 integration
+- NVIDIA Isaac Sim integration
+- Multi-sensor fusion
+- Interactive visualization dashboard
+- Real-time deployment
+- Automated subsurface interpretation
+
+ 
